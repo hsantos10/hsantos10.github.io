@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react"
-import { ArrowUpRight, Award, Mail, Moon, Play, Sun } from "lucide-react"
+import { ArrowUpRight, Award, Mail, Moon, Sun } from "lucide-react"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
@@ -10,7 +10,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
 import {
-  AWARD, DASHBOARD, EDUCATION, EXPERIENCE, HERO, PUBLICATIONS, RECENT, SKILLS, STATS, WORK, type Item,
+  AWARD, EDUCATION, EXPERIENCE, HERO, PUBLICATIONS, RECENT, REPLAY, SKILLS, STATS, WORK, type Item,
 } from "@/content"
 
 const BASE = import.meta.env.BASE_URL
@@ -124,34 +124,35 @@ function useActiveSection() {
   return active
 }
 
-/* ---------- click-to-load dashboard embed ---------- */
-function DashboardEmbed() {
-  const [live, setLive] = useState(false)
+/* ---------- force replay: the dashboard's scene-only embed mode ---------- */
+function ForceReplay({ dark }: { dark: boolean }) {
+  const [trial, setTrial] = useState(REPLAY.trials[0][0])
+  const src = `${REPLAY.base}replay/?embed=1&trial=${trial}&cmp=0&cam=iso&play=1&heading=0${dark ? "" : "&bg=light"}`
+  const c = dark ? { truth: "#ececef", pred: "#f59e0b", marker: "#22d3ee" } : { truth: "#27272a", pred: "#e8590c", marker: "#0e7490" }
   return (
     <Card className="mt-10 gap-0 py-0">
-      <div className="flex flex-wrap items-start justify-between gap-3 p-5">
+      <div className="flex flex-wrap items-start justify-between gap-3 p-5 pb-4">
         <div className="max-w-prose">
-          <p className="mb-1 font-mono text-[11px] tracking-wide text-muted-foreground uppercase">Live demo</p>
-          <h3 className="text-lg font-semibold tracking-tight">{DASHBOARD.title}</h3>
-          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{DASHBOARD.text}</p>
+          <p className="mb-1 font-mono text-[11px] tracking-wide text-muted-foreground uppercase">Live demo · force replay</p>
+          <h3 className="text-lg font-semibold tracking-tight">{REPLAY.title}</h3>
+          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{REPLAY.text}</p>
+          <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-xs text-muted-foreground">
+            <span className="flex items-center gap-2"><span className="h-1 w-5 rounded-full" style={{ background: c.truth }} />Measured by force plates</span>
+            <span className="flex items-center gap-2"><span className="h-1 w-5 rounded-full" style={{ background: c.pred }} />Predicted by the model</span>
+            <span className="flex items-center gap-2"><span className="size-2 rounded-full" style={{ background: c.marker }} />Motion-capture markers (the model's input)</span>
+          </div>
         </div>
-        <Links it={DASHBOARD as unknown as Item} />
+        <Links it={REPLAY as unknown as Item} />
       </div>
-      <div className="relative aspect-[4/3] border-t bg-black sm:aspect-video">
-        {live ? (
-          <iframe src={DASHBOARD.url} title="GRF dashboard (live)" className="absolute inset-0 size-full"
-            allow="fullscreen; xr-spatial-tracking" loading="lazy" />
-        ) : (
-          <button type="button" onClick={() => setLive(true)} className="group absolute inset-0 size-full"
-            aria-label="Launch the live dashboard">
-            <img src={`${BASE}img/${DASHBOARD.img}`} alt="" className="size-full object-cover opacity-60 transition-opacity group-hover:opacity-45" />
-            <span className="absolute inset-0 grid place-items-center">
-              <span className="inline-flex h-10 items-center gap-2 rounded-lg bg-background px-4 text-sm font-medium text-foreground shadow-md">
-                <Play className="size-4" />Launch live dashboard
-              </span>
-            </span>
-          </button>
-        )}
+      <div className="flex flex-wrap gap-1.5 px-5 pb-4" role="group" aria-label="Choose an activity">
+        {REPLAY.trials.map(([id, label]) => (
+          <Button key={id} size="xs" variant={trial === id ? "default" : "outline"} onClick={() => setTrial(id)}
+            aria-pressed={trial === id}>{label}</Button>
+        ))}
+      </div>
+      <div className={cn("relative aspect-[4/3] border-t sm:aspect-[16/9]", dark ? "bg-[#09090b]" : "bg-white")}>
+        <iframe key={src} src={src} title={`Force replay: ${REPLAY.trials.find(([i]) => i === trial)?.[1]}`}
+          className="absolute inset-0 size-full" loading="lazy" />
       </div>
     </Card>
   )
@@ -335,7 +336,7 @@ export default function App() {
             ))}
           </div>
 
-          {(tab === "all" || tab === "ml") && <DashboardEmbed />}
+          {(tab === "all" || tab === "ml") && <ForceReplay dark={dark} />}
 
           {textOnly.length > 0 && (
             <>

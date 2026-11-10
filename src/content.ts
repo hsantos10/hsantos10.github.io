@@ -57,19 +57,25 @@ export const WORK = [
     title: "Multi-Agent 3D Mapping for First Responders",
     blurb: "Two drones map GPS-denied indoor spaces in 3D using ROS, ORB-SLAM3 and IMU/LiDAR/camera fusion on embedded hardware. A decentralized protocol merges their maps in real time.",
     links: [] },
-  { kicker: "Open source", tags: ["ml"],
-    title: "HOSVD",
-    blurb: "Higher-order SVD for multidimensional data analysis and dimensionality reduction.",
-    links: [["code", "https://github.com/hsantos10/HOSVD"]] },
 ];
 
 // Full publication list (ORCID 0009-0005-0113-5067 + Crossref).
-export const DASHBOARD = {
-  url: "https://seal-app-8zk9f.ondigitalocean.app/",
-  img: "metahuman-dash.jpg",
-  title: "Explore the GRF dashboard",
-  text: "The companion site for the GRF paper. Replay held-out trials (walking, squats, jumps, yoga, tai chi and more) in 3D with measured and predicted forces side by side, and browse the results and benchmarks.",
-  links: [["open in new tab", "https://seal-app-8zk9f.ondigitalocean.app/"], ["code", "https://github.com/hsantos10/Metahuman_dashboard"]],
+export const REPLAY = {
+  base: "https://seal-app-8zk9f.ondigitalocean.app/",
+  title: "Watch a model predict ground forces",
+  text: "A person the model never saw in training, replayed in 3D. The model sees only motion-capture markers and has to infer the forces under each foot.",
+  // trial ids from the dashboard's /inference/index.json
+  trials: [
+    ["s003_20220523_jumpingjack_2", "Jumping jack"],
+    ["s004_20220524_soccerkick_2", "Soccer kick"],
+    ["s006_20220614_tennisserve_3", "Tennis serve"],
+    ["s006_20220614_taichi_3", "Tai chi"],
+    ["s006_20220614_balletsmalljump_2", "Ballet jump"],
+    ["s006_20220614_hopping_2", "Hopping"],
+    ["s002_20220520_squat_1", "Squat"],
+    ["s004_20220524_walk_5", "Walk"],
+  ] as [string, string][],
+  links: [["full dashboard", "https://seal-app-8zk9f.ondigitalocean.app/"], ["code", "https://github.com/hsantos10/Metahuman_dashboard"]],
 };
 
 export const PUBLICATIONS = [
