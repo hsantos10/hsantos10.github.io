@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react"
-import { ArrowUpRight, Award, Mail, Moon, Sun } from "lucide-react"
+import { ArrowUpRight, Award, Mail, Moon, Play, Sun } from "lucide-react"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
@@ -10,7 +10,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
 import {
-  AWARD, EDUCATION, EXPERIENCE, HERO, PUBLICATIONS, RECENT, SKILLS, STATS, WORK, type Item,
+  AWARD, DASHBOARD, EDUCATION, EXPERIENCE, HERO, PUBLICATIONS, RECENT, SKILLS, STATS, WORK, type Item,
 } from "@/content"
 
 const BASE = import.meta.env.BASE_URL
@@ -122,6 +122,39 @@ function useActiveSection() {
     return () => io.disconnect()
   }, [])
   return active
+}
+
+/* ---------- click-to-load dashboard embed ---------- */
+function DashboardEmbed() {
+  const [live, setLive] = useState(false)
+  return (
+    <Card className="mt-10 gap-0 py-0">
+      <div className="flex flex-wrap items-start justify-between gap-3 p-5">
+        <div className="max-w-prose">
+          <p className="mb-1 font-mono text-[11px] tracking-wide text-muted-foreground uppercase">Live demo</p>
+          <h3 className="text-lg font-semibold tracking-tight">{DASHBOARD.title}</h3>
+          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{DASHBOARD.text}</p>
+        </div>
+        <Links it={DASHBOARD as unknown as Item} />
+      </div>
+      <div className="relative aspect-[4/3] border-t bg-black sm:aspect-video">
+        {live ? (
+          <iframe src={DASHBOARD.url} title="GRF dashboard (live)" className="absolute inset-0 size-full"
+            allow="fullscreen; xr-spatial-tracking" loading="lazy" />
+        ) : (
+          <button type="button" onClick={() => setLive(true)} className="group absolute inset-0 size-full"
+            aria-label="Launch the live dashboard">
+            <img src={`${BASE}img/${DASHBOARD.img}`} alt="" className="size-full object-cover opacity-60 transition-opacity group-hover:opacity-45" />
+            <span className="absolute inset-0 grid place-items-center">
+              <span className="inline-flex h-10 items-center gap-2 rounded-lg bg-background px-4 text-sm font-medium text-foreground shadow-md">
+                <Play className="size-4" />Launch live dashboard
+              </span>
+            </span>
+          </button>
+        )}
+      </div>
+    </Card>
+  )
 }
 
 /* ---------- page ---------- */
@@ -253,8 +286,8 @@ export default function App() {
                 self-healing sensor networks and wake-up radio firmware for a custom chip, and I taught analog and digital electronics there for five years.</p>
               <p>Then came industry IoT. I shipped connected devices at IoT Corporation, put edge monitoring on <strong>400+ buses</strong>,
                 and ran Industry 4.0 pilots with the Centre for the Fourth Industrial Revolution in Medellín.</p>
-              <p>At Texas A&amp;M my dissertation, <em>Closing the Credibility Gap in Physical AI</em>, covers human biomechanics, field
-                motion capture and cross-embodiment robot policies. Along the way I build the systems that go with it: digital twins,
+              <p>At Texas A&amp;M I study why machine-learning models that look accurate in validation fail once they are deployed,
+                and how to evaluate them honestly. Along the way I build the systems that go with it: digital twins,
                 streaming backends, LLM agents and browser tools for terabyte-scale climate data.</p>
             </div>
             <div className="grid grid-cols-2 gap-3">
@@ -301,6 +334,8 @@ export default function App() {
               </Card>
             ))}
           </div>
+
+          {(tab === "all" || tab === "ml") && <DashboardEmbed />}
 
           {textOnly.length > 0 && (
             <>
