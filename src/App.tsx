@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react"
-import { ArrowUpRight, Mail, Moon, Sun } from "lucide-react"
+import { ArrowUpRight, Award, Mail, Moon, Sun } from "lucide-react"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
@@ -10,7 +10,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
 import {
-  EDUCATION, EXPERIENCE, HERO, PUBLICATIONS, RECENT, SKILLS, STATS, WORK, type Item,
+  AWARD, EDUCATION, EXPERIENCE, HERO, PUBLICATIONS, RECENT, SKILLS, STATS, WORK, type Item,
 } from "@/content"
 
 const BASE = import.meta.env.BASE_URL
@@ -223,6 +223,21 @@ export default function App() {
               </Card>
             ))}
           </div>
+        </section>
+
+        {/* award highlight */}
+        <section id="award" className="pt-8">
+          <Card className="gap-0 overflow-hidden py-0 md:grid md:grid-cols-[1.25fr_1fr]">
+            <img src={`${BASE}img/${AWARD.img}`} alt="The ARGUS team receiving the IEEE SciVis Contest 2026 Honorable Mention at IEEE VIS 2026"
+              loading="lazy" className="aspect-[16/9] size-full object-cover md:aspect-auto" />
+            <div className="flex flex-col justify-center gap-3 p-6 sm:p-8">
+              <Badge variant="secondary" className="h-6 gap-1.5 px-2.5"><Award data-icon="inline-start" />{AWARD.eyebrow}</Badge>
+              <h3 className="text-xl leading-snug font-semibold tracking-tight">{AWARD.title}</h3>
+              <p className="text-sm leading-relaxed text-muted-foreground">{AWARD.text}</p>
+              <p className="text-sm text-muted-foreground">{AWARD.team}</p>
+              <Links it={AWARD as unknown as Item} className="mt-1" />
+            </div>
+          </Card>
         </section>
 
         {/* story */}

@@ -15,6 +15,15 @@ export const RECENT: { date: string; title: string; text: string; href?: string;
   { date: "2026", title: "Smart homecare funded", text: "A $103K grant for a dementia-care digital twin running on 30+ sensors in two houses." },
 ];
 
+export const AWARD = {
+  img: "scivis-award.jpg",
+  eyebrow: "IEEE SciVis Contest 2026 · Honorable Mention",
+  title: "ARGUS: A Live Globe for Petabyte-Scale Climate Data Streaming in Browser and VR",
+  text: "Awarded at IEEE VIS 2026 in Boston, November 2026. ARGUS streams NASA ocean, atmosphere and climate-projection archives live into a 3D globe that also runs in VR, reading only the detail each view needs.",
+  team: "With Tiansu Chen, Thang Ha, Wai Tong and the Texas A&M ARGUS team.",
+  links: [["code", "https://github.com/hsantos10/argus"], ["demo video", "https://youtu.be/17ChssNaejo"]],
+};
+
 export const STATS = [
   { n: "12 yrs", l: "engineering, from RF to ML" },
   { n: "5", l: "peer-reviewed publications" },
