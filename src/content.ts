@@ -10,8 +10,8 @@ export const HERO = {
 };
 
 export const RECENT = [
+  { date: "Nov 2026", title: "SciVis Contest honorable mention", text: "ARGUS won an honorable mention at the IEEE SciVis Contest at VIS 2026 in Boston." },
   { date: "Oct 2026", title: "GRF paper submitted", text: "Subject-held-out evaluation of deep GRF estimators across two laboratories." },
-  { date: "Oct 2026", title: "MESACLIP-Viz", text: "A 250-year sea surface temperature globe built for an NSF proposal." },
   { date: "2026", title: "Smart homecare funded", text: "A $103K grant for a dementia-care digital twin running on 30+ sensors in two houses." },
 ];
 
@@ -32,10 +32,10 @@ export const WORK = [
     title: "Subject-Held-Out Evaluation of Deep Ground Reaction Force Estimators Across Two Laboratories",
     blurb: "Trial-level splits inflate R² by 0.04–0.19 over leave-one-subject-out evaluation. CNN, CNN-LSTM and CNN-Transformer were benchmarked, and none wins in both labs.",
     img: "grf.jpg", status: ["under review"] },
-  { kicker: "IEEE SciVis Contest 2026", tags: ["systems"],
-    title: "Exploring 400 TB of NASA Climate Data Without Downloading It",
+  { kicker: "IEEE SciVis Contest 2026 · VIS 2026", tags: ["systems"],
+    title: "ARGUS: A Live Globe for Petabyte-Scale Climate Data Streaming in Browser and VR",
     blurb: "Streams only the slices it needs from ECCO and DYAMOND, compresses them 40–75× with Tucker, HOSVD and DMD, and shows a live 3D globe in Next.js over a FastAPI query service.",
-    img: "sciviz.jpg" },
+    img: "sciviz.jpg", status: ["honorable mention"] },
   { kicker: "NSF proposal dashboard · 2026", tags: ["systems"],
     title: "MESACLIP-Viz: 250 Years of Sea Surface Temperature",
     blurb: "CESM ensemble SST from 1850 to 2105, streamed from NCAR and rendered live on the GPU, with point probes and animated presets.",
