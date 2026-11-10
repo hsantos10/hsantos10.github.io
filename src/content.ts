@@ -35,7 +35,7 @@ export const WORK = [
   { kicker: "IEEE SciVis Contest 2026 · VIS 2026", tags: ["systems"],
     title: "ARGUS: A Live Globe for Petabyte-Scale Climate Data Streaming in Browser and VR",
     blurb: "Streams ECCO ocean, DYAMOND atmosphere and CMIP6 data live from the National Science Data Fabric, reading only the detail each view needs: about 13 MB for a full-globe ocean view instead of ~14 GB. The data is ray-marched on the GPU, and the same globe runs in VR headsets.",
-    img: "sciviz.jpg", links: [["code", "https://github.com/hsantos10/argus"], ["demo", "https://youtu.be/17ChssNaejo"]], status: ["honorable mention"] },
+    img: "argus.jpg", links: [["code", "https://github.com/hsantos10/argus"], ["demo", "https://youtu.be/17ChssNaejo"]], status: ["honorable mention"] },
   { kicker: "NSF proposal dashboard · 2026", tags: ["systems"],
     title: "MESACLIP-Viz: 250 Years of Sea Surface Temperature",
     blurb: "CESM ensemble SST from 1850 to 2105, streamed from NCAR and rendered live on the GPU, with point probes and animated presets.",
