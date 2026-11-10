@@ -213,6 +213,13 @@ export default function App() {
                   <CardTitle className="mt-1">{r.title}</CardTitle>
                   <CardDescription>{r.text}</CardDescription>
                 </CardHeader>
+                {r.href && (
+                  <CardContent className="mt-auto">
+                    <Badge variant="outline" asChild>
+                      <a href={r.href} {...ext}>{r.cta}<ArrowUpRight data-icon="inline-end" /></a>
+                    </Badge>
+                  </CardContent>
+                )}
               </Card>
             ))}
           </div>

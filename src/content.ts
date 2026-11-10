@@ -9,9 +9,9 @@ export const HERO = {
   open: "Open to applied ML and robotics roles · 2027",
 };
 
-export const RECENT = [
-  { date: "Nov 2026", title: "SciVis Contest honorable mention", text: "ARGUS won an honorable mention at the IEEE SciVis Contest at VIS 2026 in Boston." },
-  { date: "Oct 2026", title: "GRF paper submitted", text: "Subject-held-out evaluation of deep GRF estimators across two laboratories." },
+export const RECENT: { date: string; title: string; text: string; href?: string; cta?: string }[] = [
+  { date: "Nov 2026", title: "SciVis Contest honorable mention", text: "ARGUS won an honorable mention at the IEEE SciVis Contest at VIS 2026 in Boston.", href: "https://github.com/hsantos10/argus", cta: "code" },
+  { date: "Oct 2026", title: "GRF paper submitted to IEEE JBHI", text: "Thesis Ch1 (Metahuman): subject-held-out evaluation of deep GRF estimators across two laboratories, with a live companion dashboard.", href: "https://seal-app-8zk9f.ondigitalocean.app/", cta: "dashboard" },
   { date: "2026", title: "Smart homecare funded", text: "A $103K grant for a dementia-care digital twin running on 30+ sensors in two houses." },
 ];
 
@@ -24,14 +24,14 @@ export const STATS = [
 
 // Cards with a real figure or screenshot come first; the rest are text-only cards.
 export const WORK = [
-  { kicker: "Robot learning · in preparation", tags: ["ml", "robotics"],
+  { kicker: "Thesis Ch3 · robot learning · in preparation", tags: ["ml", "robotics"],
     title: "Who Was Held Out? Embodiment-Held-Out Evaluation of Cross-Embodiment Robot Policies",
     blurb: "An audit of 17 policy papers and a quadrotor testbed. The same policy family scores 53% or 88% depending only on whether the target robot was in training.",
     img: "heldout.jpg", status: ["in prep"] },
-  { kicker: "Biomechanics · under review", tags: ["ml"],
+  { kicker: "Metahuman · thesis Ch1 · IEEE JBHI, under review", tags: ["ml"],
     title: "Subject-Held-Out Evaluation of Deep Ground Reaction Force Estimators Across Two Laboratories",
     blurb: "Trial-level splits inflate R² by 0.04–0.19 over leave-one-subject-out evaluation. CNN, CNN-LSTM and CNN-Transformer were benchmarked, and none wins in both labs.",
-    img: "grf.jpg", status: ["under review"] },
+    img: "grf.jpg", links: [["dashboard", "https://seal-app-8zk9f.ondigitalocean.app/"], ["code", "https://github.com/hsantos10/Metahuman_Attention"]], status: ["under review"] },
   { kicker: "IEEE SciVis Contest 2026 · VIS 2026", tags: ["systems"],
     title: "ARGUS: A Live Globe for Petabyte-Scale Climate Data Streaming in Browser and VR",
     blurb: "Streams ECCO ocean, DYAMOND atmosphere and CMIP6 data live from the National Science Data Fabric, reading only the detail each view needs: about 13 MB for a full-globe ocean view instead of ~14 GB. The data is ray-marched on the GPU, and the same globe runs in VR headsets.",
@@ -40,10 +40,10 @@ export const WORK = [
     title: "MESACLIP-Viz: 250 Years of Sea Surface Temperature",
     blurb: "CESM ensemble SST from 1850 to 2105, streamed from NCAR and rendered live on the GPU, with point probes and animated presets.",
     img: "mesaclip.jpg" },
-  { kicker: "Research dashboard", tags: ["ml", "systems"],
+  { kicker: "Metahuman · thesis Ch1 · live dashboard", tags: ["ml", "systems"],
     title: "Metahuman GRF Dashboard",
-    blurb: "Replays held-out trials in 3D with measured and predicted forces side by side, plus the paper's results and benchmarks.",
-    img: "metahuman-dash.jpg", links: [["code", "https://github.com/hsantos10/Metahuman_dashboard"]] },
+    blurb: "The companion site for the JBHI paper. It replays every held-out trial in 3D with measured and predicted forces side by side, alongside the paper's results and benchmarks.",
+    img: "metahuman-dash.jpg", links: [["live", "https://seal-app-8zk9f.ondigitalocean.app/"], ["replay", "https://seal-app-8zk9f.ondigitalocean.app/replay"], ["code", "https://github.com/hsantos10/Metahuman_dashboard"]] },
   { kicker: "Streaming infrastructure · open source", tags: ["systems"],
     title: "Real-Time MQTT → TDengine Streaming Stack",
     blurb: "EMQX brokers take in high-volume device data, and a rule engine writes it to TDengine time-series storage. It also has a REST API and ThingsBoard dashboards, all deployed with Docker Compose.",
@@ -69,7 +69,8 @@ export const WORK = [
 // Full publication list (ORCID 0009-0005-0113-5067 + Crossref).
 export const PUBLICATIONS = [
   { year: 2026, title: "Subject-Held-Out Evaluation of Deep Ground Reaction Force Estimators Across Two Laboratories",
-    authors: "H. D. Santos, Y. Chen, Y. Ding, J. Tao, X. Zhang", venue: "Under review", links: [] },
+    authors: "H. D. Santos, Y. Chen, Y. Ding, J. Tao, X. Zhang", venue: "IEEE Journal of Biomedical and Health Informatics (under review)",
+    links: [["code", "https://github.com/hsantos10/Metahuman_Attention"], ["dashboard", "https://seal-app-8zk9f.ondigitalocean.app/"]] },
   { year: 2025, title: "From Laboratory to Field: Benchmarking Motion Capture Technologies for Offshore Wind Turbine Maintenance Ergonomics",
     authors: "Y. Chen, H. Santos, J. Tao, Y. Ding, X. Zhang", venue: "Proceedings of the Human Factors and Ergonomics Society Annual Meeting",
     links: [["doi", "https://doi.org/10.1177/10711813251357902"]] },
