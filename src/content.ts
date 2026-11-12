@@ -12,7 +12,7 @@ export const HERO = {
 export const RECENT: { date: string; title: string; text: string; href?: string; cta?: string }[] = [
   { date: "Nov 2026", title: "SciVis Contest honorable mention", text: "ARGUS won an honorable mention at the IEEE SciVis Contest at VIS 2026 in Boston.", href: "https://github.com/hsantos10/argus", cta: "code" },
   { date: "Oct 2026", title: "GRF paper submitted", text: "Subject-held-out evaluation of deep ground reaction force estimators across two laboratories, with a live companion dashboard.", href: "https://seal-app-8zk9f.ondigitalocean.app/", cta: "dashboard" },
-  { date: "2026", title: "Smart homecare funded", text: "A $103K grant for a dementia-care digital twin running on 30+ sensors in two houses." },
+  { date: "2026", title: "Smart homecare funded", text: "A $103K Texas A&M Health grant for a dementia-care digital twin with 30+ sensors; I build its data layer." },
 ];
 
 export const AWARD = {
@@ -49,13 +49,13 @@ export const WORK = [
     title: "Real-Time MQTT → TDengine Streaming Stack",
     blurb: "EMQX brokers take in high-volume device data, and a rule engine writes it to TDengine time-series storage. It also has a REST API and ThingsBoard dashboards, all deployed with Docker Compose.",
     img: "emqx.jpg", links: [["code", "https://github.com/hsantos10/emqx_tdengine"]] },
-  { kicker: "Grant-funded ($103K) · lead engineer · 2026", tags: ["systems", "ml"],
+  { kicker: "Grant-funded ($103K) · data integration & analytics · 2026", tags: ["systems", "ml"],
     title: "Smart Homecare Digital Twin",
     blurb: "A production IoT digital twin. It has a FastAPI backend on a live Home Assistant WebSocket, a rule engine, and real-time activity inference over 30+ sensors in two houses. Caregivers and admins share one REST contract through a React app and an admin panel.",
     links: [["code", "https://github.com/hsantos10/smart-homecare"]] },
   { kicker: "NIST First Responder UAS Challenge · 2022–23", tags: ["robotics"],
     title: "Multi-Agent 3D Mapping for First Responders",
-    blurb: "Two drones map GPS-denied indoor spaces in 3D using ROS, ORB-SLAM3 and IMU/LiDAR/camera fusion on embedded hardware. A decentralized protocol merges their maps in real time.",
+    blurb: "Two drones map GPS-denied indoor spaces in 3D using ROS, visual SLAM and IMU/LiDAR/camera fusion on embedded hardware. A decentralized protocol merges their maps in real time.",
     links: [] },
 ];
 
@@ -99,7 +99,7 @@ export const PUBLICATIONS = [
 // Dates from Resumes A and C (Nov 2026).
 export const EXPERIENCE = [
   { title: "Lead Researcher, Applied ML & Systems", org: "Texas A&M University", place: "College Station, TX", date: "Jan 2021 – present",
-    blurb: "Leads robotics, digital-twin and applied-ML projects end to end. Built a 5-stage data curation pipeline that unifies sensor data from 6+ physical environments, real-time digital-twin backends (TDengine, EMQX), and multi-agent LLM and RAG pipelines." },
+    blurb: "Leads applied-ML and data-systems projects end to end: subject-held-out evaluation of deep models on motion-capture data, a configurable data-preparation pipeline for ablation studies, real-time digital-twin backends (TDengine, EMQX), and multi-agent LLM and RAG pipelines." },
   { title: "Generative AI Ambassador", org: "Texas A&M Institute of Data Science", place: "College Station, TX", date: "Jul 2025 – present",
     blurb: "Teaches workshops on LLM agents, multi-agent orchestration, RAG and MCP tool use to 50+ researchers and engineers. Built a full-stack GenAI education platform." },
   { title: "IoT Consultant", org: "Centre for the Fourth Industrial Revolution", place: "Medellín, Colombia", date: "Jul 2020 – Apr 2021",
@@ -120,7 +120,7 @@ export const SKILLS = [
   { group: "GenAI & agents", items: ["Multi-agent LLM workflows", "Model Context Protocol", "RAG / Graph RAG", "LangChain", "Embeddings", "LLM evaluation"] },
   { group: "ML & modeling", items: ["PyTorch", "TensorFlow", "Hugging Face", "scikit-learn", "CNN / LSTM / Transformer", "GNN", "Tucker / HOSVD / DMD"] },
   { group: "Validation", items: ["Leave-one-subject-out", "Out-of-distribution testing", "Data-leakage analysis", "Domain-shift mitigation"] },
-  { group: "Robotics & perception", items: ["ROS", "ORB-SLAM3", "IMU / LiDAR / camera fusion", "GPS-denied localization", "Isaac Sim / Isaac Lab"] },
+  { group: "Robotics & perception", items: ["ROS", "Visual SLAM", "MuJoCo", "SmolVLA (LoRA)", "IMU / LiDAR / camera fusion", "GPS-denied localization", "Isaac Sim / Isaac Lab"] },
   { group: "Embedded & edge", items: ["C/C++ firmware", "FreeRTOS", "Edge inference", "Real-time acquisition", "MQTT"] },
   { group: "Backend & data", items: ["Python", "FastAPI", "WebSockets", "SQL / SQLite", "EMQX", "TDengine", "Docker Compose", "CI/CD"] },
   { group: "Frontend", items: ["TypeScript", "React", "Next.js", "Tailwind", "shadcn/ui", "WebXR"] },
