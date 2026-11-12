@@ -128,7 +128,7 @@ export const SKILLS = [
 ];
 
 export const EDUCATION = [
-  { title: "Ph.D., Electrical Engineering", org: "Texas A&M University", date: "expected 2027",
+  { title: "Ph.D., Electrical Engineering", org: "Texas A&M University", date: "expected Summer 2027",
     blurb: "Research on why ML models that look accurate in validation fail after deployment. Coursework in ML, NLP, information retrieval, graph ML, scientific ML and embedded systems co-design." },
   { title: "M.S. and B.S., Electrical Engineering", org: "Pontificia Universidad Javeriana, Bogotá", date: "2017 · 2014",
     blurb: "M.S. thesis on self-healing wireless sensor networks." },
